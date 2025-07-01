@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Visualize Column</title>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="main_visual">
+    <h2 id="visual_heading">Select a Column to Visualize</h2>
+    <form action="/plot" method="POST">
+    <input type="hidden" name="filename" value="{{ filename }}">
+    <label for="column">Choose a column:</label>
+    <select name="column" class="custom-select" required>
+      {% for col in columns %}
+        <option value="{{ col }}">{{ col }}</option>
+      {% endfor %}
+    </select>
+    <br><br>
+    <button type="submit" class="custom-button">Generate Chart</button>
+</form>
+
+    <h2 id="visual_heading">Select Columns to show relations</h2>
+    <form action="/plot2" method="POST">
+      <input type="hidden" name="filename" value="{{ filename }}">
+    <label for="column1">Choose 1st column:</label>
+    <select name="column1" class="custom-select" required>
+      {% for col in columns %}
+        <option value="{{ col }}">{{ col }}</option>
+      {% endfor %}
+    </select><br><br>
+    <label for="column2">Choose 2nd column:</label>
+    <select name="column2" class="custom-select" required>
+      {% for col in columns %}
+        <option value="{{ col }}">{{ col }}</option>
+      {% endfor %}
+    </select>
+    <br><br>
+    <button type="submit" class="custom-button">Generate Relation</button>
+    </form><br><br>
+
+    <div class="menu_ber">
+      <a href="/ml_analysis?filename={{ filename }}">ML Analysis</a>
+      <a href="/advance_analysis?filename={{ filename }}">Advanced Analytics</a>
+    </div>
+
+
+  </div>
+</body>
+</html>

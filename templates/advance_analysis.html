@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Advanced Analysis Options</title>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Advanced Analysis</h2>
+
+  <div class="advance-analysis-buttons">
+    <button onclick="showForm('featureImportance')">Feature Importance Viewer</button>
+    <button onclick="showForm('clusterSummary')">Cluster-wise Segment Summary</button>
+    <button onclick="showForm('anomalyDetection')">Anomaly Detection</button>
+  </div>
+
+  <div id="featureImportance" class="form-container">
+    <form action="/feature_importance" method="POST">
+      <input type="hidden" name="filename" value="{{ filename }}">
+      <label>Select Target Column:</label>
+      <select name="target" class="advance-analysis-custom-select" required>
+        {% for col in columns %}
+          <option value="{{ col }}">{{ col }}</option>
+        {% endfor %}
+      </select><br><br>
+      <button type="submit" class="advance-analysis-custom-button">Show Feature Importance</button>
+    </form>
+  </div>
+
+  <div id="clusterSummary" class="form-container">
+    <p><strong>Cluster-wise Segment Summary:</strong> Click here to summarize your data based on cluster</p><br>
+    <a class="clusterSummary_tag" href="/ml_analysis?filename={{ filename }}">ML Analysis</a>
+  </div>
+
+  <div id="anomalyDetection" class="form-container">
+    <p><strong>Anomaly Detection:</strong> Click here to detect anomalies from your data..</p><br>
+    <a class="clusterSummary_tag" href="/anomaly?filename={{ filename }}">Anomaly Detection</a>
+  </div>
+
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+
+</body>
+</html>

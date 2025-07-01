@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Analysis</title>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+        label {
+            font-weight: bold;
+            color: #555;
+            width: 100%;
+            text-align: left;
+            margin-bottom: 5px;
+        }
+        select, input[type="number"], input[type="text"], input[type="range"] {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .form-group {
+            width: 100%;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        small {
+            font-size: 0.85em;
+            color: #777;
+            margin-top: 5px;
+            display: block;
+        }
+    </style>
+    <script>
+        function toggleOptions() {
+            const model = document.getElementById("modelSelect").value;
+            document.getElementById("kmeansOptions").style.display = model === "kmeans" ? "block" : "none";
+            document.getElementById("dbscanOptions").style.display = model === "dbscan" ? "block" : "none";
+        }
+
+        window.onload = toggleOptions;
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Machine Learning Analysis</h2>
+        <form action="/ml_insights" method="POST">
+            <input type="hidden" name="filename" value="{{ filename }}">
+
+            <div class="form-group">
+                <label for="modelSelect">Select Model:</label>
+                <select name="model" id="modelSelect" onchange="toggleOptions()">
+                    <option value="kmeans">KMeans Clustering</option>
+                    <option value="dbscan">DBSCAN Clustering</option>
+                </select>
+            </div>
+
+            <!-- KMeans options -->
+            <div class="form-group" id="kmeansOptions">
+                <label for="cluster"># of Clusters (for KMeans):</label>
+                <input type="number" name="cluster" value="3" min="2">
+            </div>
+
+            <!-- DBSCAN options -->
+            <div class="form-group" id="dbscanOptions" style="display: none;">
+                <label for="eps">Epsilon (eps):</label>
+                <input type="range" name="eps" id="eps" min="0.1" max="1.5" step="0.1" value="0.5">
+                <small>Controls neighborhood radius for clustering</small>
+
+                <label for="min_samples">Min Samples:</label>
+                <select name="min_samples" id="min_samples">
+                    {% for i in range(3, 11) %}
+                        <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                </select>
+                <small>Minimum points required to form a dense region</small>
+            </div>
+
+            <button type="submit">Run ML Analysis</button>
+        </form>
+    </div>
+</body>
+</html>

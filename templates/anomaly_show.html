@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anomaly Detection Result</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        h2, h3 {
+            color: #2c3e50;
+        }
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            margin-bottom: 30px;
+        }
+        .table-wrapper {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .scrollable-table {
+            max-height: 300px; /* adjust height as needed */
+            overflow: auto;
+            border: 1px solid #ddd;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+        table th, table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .btn-download {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-download:hover {
+            background-color: #1e8449;
+        }
+        .back-button {
+            display: inline-block;
+            background-color: #6c757d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Visualized Results</h2>
+    <img src="{{ chart }}" alt="Chart">
+
+    <h3>Anomalies Detected (Top Outliers):</h3>
+    <div class="table-wrapper">
+        <div class="scrollable-table" id="normal-table">
+            {{ table|safe }}
+        </div>
+    </div>
+
+    <h3>Normal Data(without Anomaly data) Summary:</h3>
+    <div class="table-wrapper">
+        <div class="scrollable-table" id="normal-table">
+            {{ table2|safe }}
+        </div>
+    </div>
+
+    <button class="btn-download" onclick="downloadAsCSV()">Download Normal Table as CSV</button>
+    <a href="/" class="back-button">Go Back to Upload</a>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+
+</body>
+</html>
+
+
+

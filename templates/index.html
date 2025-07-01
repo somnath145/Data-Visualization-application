@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Dashboard</title>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="maindiv">
+    <div class="indide">
+    <h1>AI-Powered Data Dashboard</h1>
+    <p>Upload your CSV file to begin exploring your data.</p>
+
+    <form id="csvForm" action="/visualize" method="POST" enctype="multipart/form-data">
+    <input type="file" id="csvFile" name="csv_file" required>
+    <button type="button" onclick="showToast()" id="Upload">Upload</button>
+    </form>
+    </div>
+    <div id="toast">File Uploaded successfully</div>
+
+    <div class="menu_ber">
+      <a href="#" onclick="uploadCSV()">Show Data</a>
+      <a href="#" onclick="submitForm()">Analyze</a>
+    </div>
+
+    <div id="preview-container">
+      <div id="preview"></div>
+      <div class="main_file_summery">
+        <div id="file_summery" style="display: none;"></div>
+      </div>
+    </div>
+
+  
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>

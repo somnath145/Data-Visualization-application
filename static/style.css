@@ -1,0 +1,225 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #f9f9f9;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#toast {
+      visibility: hidden;
+      min-width: 250px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      padding: 16px;
+      position: fixed;
+      z-index: 1;
+      left: 50%;
+      bottom: 30px;
+      transform: translateX(-50%);
+      font-size: 17px;
+      opacity: 0;
+      transition: opacity 0.5s, bottom 0.5s;
+    }
+    #toast.show {
+      visibility: visible;
+      opacity: 1;
+      bottom: 50px;
+    }
+#csvFile{
+  margin-top: 10px;
+  padding: 10px;
+  background-color: aquamarine;
+  border: 2px solid rgb(14, 193, 133);
+  border-radius: 2rem;
+  font-size: 1.1rem;
+}
+#Upload{
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #017afc;
+  border: 2.5px solid rgb(0, 21, 251);
+  color: white;
+  border-radius: 2rem;
+  font-size: 1.1rem;
+  height: 3.1rem;
+  width: 7rem;
+}
+.maindiv{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin-top: 6rem; */
+  flex-direction: column;
+  gap: 2rem;
+}
+.indide{
+  margin-top: 3rem;
+}
+#csvFile::file-selector-button {
+  background-color: #017afc;
+  color: white;
+  border: 2.5px solid #f9f9f9;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-radius: 2rem;
+}
+
+.preview-table{
+  border-collapse: collapse;
+  width: 100%;
+}
+.preview-table th, .preview-table td{
+  border: 3px solid rgb(14, 193, 133);
+  padding: 8px;
+  text-align: center;
+}
+.preview-table th{
+  background-color:aquamarine;
+}
+.preview-table th:hover{
+    cursor: pointer;
+    background-color:rgb(22, 130, 94);
+    color: aliceblue;
+}
+.preview-table tr:hover {
+  background-color: rgb(192, 249, 230);
+}
+#preview-container{
+  overflow-x: auto;
+  width: 100%;
+}
+.main_file_summery{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+#file_summery{
+  background-color: aquamarine;
+  border-radius: 2rem;
+  padding-left: 1rem;
+  width: 100%;
+  border: 3px solid rgb(22, 130, 94);
+}
+
+.menu_ber{
+  background-color: aquamarine;
+  border: 2px solid rgb(14, 193, 133);
+  display: flex;
+  justify-content:space-evenly;
+  align-items:center;
+  width: 100%;
+  height: 3rem;
+  border-radius: 1.5rem;
+  margin-top: 1rem;
+}
+.menu_ber a{
+  text-decoration: none;
+  font-size: 1rem;
+  color: black;
+  font-weight: 500;
+}
+
+.main_visual{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  background-color:rgb(178, 249, 225);
+  font-size: 1rem;
+}
+
+
+.custom-select {
+  width: 250px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s;
+}
+
+.custom-select:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+/* Style the submit button */
+.custom-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 6rem;
+}
+
+.custom-button:hover {
+  background-color: #0056b3;
+}
+
+
+#show_chart{
+  background-color: aquamarine;
+  font-size: 1.2rem;
+}
+#show_chart_div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.advance-analysis-buttons {
+      margin-bottom: 20px;
+    }
+
+    .advance-analysis-buttons button {
+      margin-right: 10px;
+      padding: 10px 20px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .advance-analysis-buttons button:hover {
+      background-color: #0056b3;
+    }
+
+    .form-container {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      background-color: #fff;
+      border-radius: 5px;
+    }
+
+    .advance-analysis-custom-select {
+      padding: 8px;
+      width: 250px;
+    }
+
+    .advance-analysis-custom-button, .clusterSummary_tag{
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .advance-analysis-custom-button:hover {
+      background-color: #218838;
+    }
