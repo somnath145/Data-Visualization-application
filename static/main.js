@@ -1,14 +1,3 @@
-console.log("Script loaded!");
-
-// function uploadCSV() {
-//   const fileInput = document.getElementById("csvFile");
-//   const file = fileInput.files[0];
-//   if (file) {
-//     alert("File selected: " + file.name);
-//   } else {
-//     alert("Please select a file first.");
-//   }
-// }
 
 function showToast() {
       const toast = document.getElementById("toast");
